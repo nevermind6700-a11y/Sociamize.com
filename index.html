@@ -1,27 +1,20 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sociamize | Digital Growth</title>
-  <link href="https://fonts.googleapis.com/css2?family=Corporate S Pro Regular:wght@300;400;500;600;700;800;900;&display=swap" rel="stylesheet" />
-  <style>
-    /* Reset */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: "Corporate S Pro Regular", sans-serif; background: #111; color: #fff; line-height: 1.6; }
-    a { text-decoration: none; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sociamize</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto+Slab:wght@700&display=swap" rel="stylesheet">
+<style>
+/* Reset & Base */
+body, html { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; background: #000; color: #fff; }
+a { text-decoration: none; color: inherit; }
+img { max-width: 100%; display: block; }
 
-    /* Header */
-    /* Header */
-/* Smooth scrolling */
-html {
-  scroll-behavior: smooth;
-}
-
-/* Header */
+/* HEADER */
 header {
-  background: rgba(0, 0, 0, 0.2);
-  padding: 20px 40px;
+   background: rgba(0, 0, 0, 0.2);
+  padding: 5px 30px;
   display: flex; 
   justify-content: space-between; 
   align-items: center;
@@ -34,302 +27,146 @@ header {
   box-shadow: 0 8px 20px rgba(0,0,0,0.2);
   border-radius: 12px;
   backdrop-filter: blur(5px);
-  height: 60px;
+  height: auto; 
 }
-
-/* Logo */
-.logo img { 
-  height: 230px; 
-}
-
-/* Main nav */
-nav { 
-  flex: 2; 
-  display: flex; 
-  justify-content: center; 
-  align-items: center; 
-  gap: 20px; 
+.head-text h3{ font-size: 1.2rem; color: #ff0000; letter-spacing: 2px; margin-bottom: 15px; font-weight: 600; }
+/* Nav */
+nav {
+  display: flex;
+  align-items: center;
+  gap: 10px;
   position: relative;
 }
-
-/* Main menu links including Services */
 nav > a,
 nav > .dropdown-wrapper > a.dropdown {
-  color: #fff !important;
-  font-family: 'Poppins', sans-serif !important;
-  font-weight: 600 !important;
-  font-size: 14px !important;
+  color: #fff;
+  font-weight: 600;
+  font-size: 14px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  text-decoration: none;
-  padding: 8px 4px;
+  padding: 8px 15px;
   position: relative;
-  transition: color 0.3s ease;
-}
-
-/* Hollow dot for main menu items */
-nav > a::before,
-nav > .dropdown-wrapper > a.dropdown::before {
-  content: "•";
-  font-size: 16px;
-  color: #fff;
-  opacity: 0.5;
-  margin-right: 6px;
   transition: color 0.3s;
 }
-
-/* Active dot */
-nav > a.active::before {
-  color: red;
-  opacity: 1;
-}
-
-/* Hover effect for main items */
-nav > a:hover,
-nav > .dropdown-wrapper > a.dropdown:hover {
-  color: red !important;
-}
-nav > a:hover::before,
-nav > .dropdown-wrapper > a.dropdown:hover::before {
-  color: red !important;
-}
-
-/* Dropdown arrow replaced with custom icon */
-nav > .dropdown-wrapper > a.dropdown::after {
-  content: "⮟";
-  font-size: 10px;
-  margin-left: 4px;
-  color: red;
-}
-
-
-/* Dropdown wrapper */
-.dropdown-wrapper {
-  position: relative;
-}
-
-/* Dropdown menu */
+nav > a::before,
+nav > .dropdown-wrapper > a.dropdown::before { content: "•"; font-size: 16px; color: #fff; opacity: 0.5; margin-right: 6px; transition: color 0.3s; }
+nav > a.active::before { color: red; opacity: 1; }
+nav > a:hover, nav > .dropdown-wrapper > a.dropdown:hover { color: red; }
+nav > a:hover::before, nav > .dropdown-wrapper > a.dropdown:hover::before { color: red; }
+nav > .dropdown-wrapper > a.dropdown::after { content: "⮟"; font-size: 10px; margin-left: 4px; color: red; }
+.dropdown-wrapper { position: relative; }
 nav .dropdown-menu {
   position: absolute;
   top: 100%;
   left: 0;
-  min-width: 400px;           
-  max-width: 500px;           
+  min-width: 350px;
   display: flex;
   flex-direction: column;
-  border-radius: 8px;
-  overflow: hidden;
-  background: #000;           
-  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  background: #000;
   opacity: 0;
   transform: translateY(-10px);
   pointer-events: none;
   transition: all 0.3s ease;
   z-index: 100;
 }
+.dropdown-wrapper:hover .dropdown-menu { opacity: 1; transform: translateY(0); pointer-events: auto; }
+nav .dropdown-menu a { color: #fff; padding: 12px 20px; transition: color 0.3s; }
+nav .dropdown-menu a:hover { color: red; }
 
-/* Show dropdown on hover */
-.dropdown-wrapper:hover .dropdown-menu {
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
-}
+/* Hamburger */
+.hamburger { display: none; flex-direction: column; justify-content: space-between; width: 24px; height: 18px; cursor: pointer; z-index: 1010; }
+.hamburger span { display: block; height: 3px; background: #fff; border-radius: 2px; }
 
-/* Dropdown items same font as main menu */
-nav .dropdown-menu a {
-  color: #fff;                       
-  font-family: 'Poppins', sans-serif; 
-  font-weight: 600;                    
-  font-size: 14px;                     
-  text-decoration: none;
-  padding: 12px 20px;
-  transition: color 0.3s;
-}
-
-/* Dropdown hover effect */
-nav .dropdown-menu a:hover {
-  color: red;
-}
-
-/* Responsive */
-@media (max-width: 992px) {
-  nav {
-    flex-direction: column;
-    gap: 15px;
-  }
-  .dropdown-menu {
-    position: static;
-    transform: none;
-    opacity: 1;
-    pointer-events: auto;
-  }
-}
-
-
-
-
-
-    /* Hero */
-    .hero {
-      position: relative;
-      overflow: hidden;
-      min-height: 100vh;
-      display: flex;
-      align-items: left;
-      justify-content: center;
-      perspective: 1px;
-      background: url('hero-banner.jpeg') center center/cover no-repeat;
-      transform-origin: center center;
-      transition: transform 0.1s linear;
-    }
-    .hero::before {
-      content: '';
-      position: absolute;
-      top:0; left:0; right:0; bottom:0;
-      background: rgba(0,0,0,0.5);
-      z-index:1;
-    }
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-      width: 100%;
-      max-width: 1200px;
-      padding: 120px 60px 60px;
-      gap: 40px;
-    }
-    .hero-text h1 { font-size: 3rem; font-weight: 700; margin-bottom: 10px; color: #fff; }
-    .hero-text p { font-size: 1.5rem; margin-bottom: 10px; color: #fff; }
-    .hero-text h1 span { color: #ff0000; }
-    .hero-text { max-width:40%; text-align: left; }
-   
- .about {
+/* HERO */
+/* HERO */
+.hero {
+  position: relative;
+  overflow: hidden;
+  min-height: 90vh; /* shorter hero for better fit */
   display: flex;
-  gap: 40px;
-  padding: 100px;
   align-items: center;
-  background: #111; /* dark background */
+  justify-content: flex-start;
+  background: url('hero banner.jpeg') center center/cover no-repeat;
+  padding: 40px 20px; /* reduced top & bottom padding */
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top:0; left:0; right:0; bottom:0;
+  background: rgba(0,0,0,0.5);
+  z-index:1;
+}
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 1200px;
+  padding: 40px 20px; /* compact padding */
+}
+.hero-text h1 {
+  font-size: 2.5rem; /* slightly smaller for mobile readability */
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #fff;
+}
+.hero-text h1 span {
+  color: #ff0000;
+}
+.hero-text p {
+  font-size: 1.2rem; /* smaller for mobile */
+  margin-bottom: 0;
   color: #fff;
 }
 
-.about-images {
-  flex: 1;
-  display: flex-start;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-  align-items: center;
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .hero {
+    min-height: 60vh; /* shorter on smaller screens */
+    padding: 30px 15px;
+  }
+  .hero-content {
+    padding: 20px 10px;
+    text-align: center;
+  }
+  .hero-text h1 {
+    font-size: 2rem;
+  }
+  .hero-text p {
+    font-size: 1rem;
+  }
 }
 
-.about-images img {
-  width: 80%;
-  border-radius: 12px;
-  object-fit: cover;
-}
 
-/* text part */
-.about-text {
-  flex: 1;
-}
-
-.about-text h2 {
-  font-size: 1.2rem;
-  color: #ff0000;  /* orange heading */
-  letter-spacing: 2px;
-  margin-bottom: 5px;
-  font-weight: 500;
-}
-
-.about-text h3 {
-  font-size: 36px;
-  font-weight: 700;
-  margin-bottom: 20px;
-  line-height: 1.1;
-}
-
-.about-text p {
-  font-size: 18px;
-  color: #ddd;
-  margin-bottom: 30px;
-  line-height: 1.6;
-}
-
-/* bright red button */
+/* ABOUT US */
+.about { display: flex; gap: 40px; padding: 100px 5%; align-items: center; background: #111; }
+.about-images { flex: 1; display: flex; justify-content: center; }
+.about-images img { width: 80%; border-radius: 12px; object-fit: cover; }
+.about-text { flex: 1; }
+.about-text h2 { font-size: 1.2rem; color: #ff0000; letter-spacing: 2px; margin-bottom: 5px; font-weight: 500; }  
+.about-text h3 { font-size: 36px; font-weight: 700; margin-bottom: 20px; line-height: 1.1; }
+.about-text p { font-size: 18px; color: #ddd; margin-bottom: 30px; line-height: 1.6; }
 .about-text .btn {
   background: linear-gradient(to bottom, #ff3333, #cc0000);
   color: #fff;
-  font-size: 17px;
+  font-size: clamp(14px, 2vw, 17px); /* min 14px, max 17px, scales with viewport */
   font-weight: 600;
-  padding: 14px 50px;
+  padding: clamp(10px, 1.5vw, 14px) clamp(25px, 4vw, 50px); /* top/bottom & left/right scale */
   border-radius: 999px;
-  display: inline-block;
-  text-decoration: none;
   transition: all 0.3s ease;
+  display: inline-block;
+  text-align: center;
 }
-
 .about-text .btn:hover {
   background: linear-gradient(to bottom, #cc0000, #ff3333);
   transform: scale(1.03);
 }
 
-
-    /* Features */
-    .features {
-  display: flex;
-  justify-content: space-around;
-  padding: 40px 20px;
-  border-top: 1px solid #333;
-  border-bottom: 1px solid #333;
-  background: #111; /* dark background */  
-}
-
-.features div {
-  text-align: center;
-  font-size: 1.2rem;
-  color: #fff;
-  padding: 0 40px;
-  position: relative;
-}
-
-/* vertical separator line */
-.features div:not(:last-child)::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  right: -30%;
-  transform: translateY(-50%);
-  height: 100%;
-  width: 1px;
-  background: #fff; /* subtle grey line */
-}
-
-/* add emoji above text */
-.feature-option::before {
-  content: "";
-  display: block;
-  font-size: 40px; /* matches previous icon width/height */
-  line-height: 40px; /* vertical alignment */
-  margin-bottom: 10px;
-  text-align: center;
-}
-/* responsive stacking */
-@media (max-width: 992px) {
-  .features {
-    flex-direction: column;
-    gap: 20px;
-  }
-  .features div:not(:last-child)::after {
-    display: none;
-  }
-}
-
-
-
-
-    /* Services */
-    .services {
+/* Features */
+    .features { display:flex; justify-content:space-around; padding:40px 20px; border-top:1px solid #333; border-bottom:1px solid #333; background:#111; }
+    .features div { text-align:center; font-size:1.2rem; color:#fff; padding:0 40px; position:relative; }
+    .features div:not(:last-child)::after { content:""; position:absolute; top:50%; right:-30%; transform:translateY(-50%); height:100%; width:1px; background:#fff; }
+    .feature-option::before { content:""; display:block; font-size:40px; line-height:40px; margin-bottom:10px; text-align:center; }
+    @media(max-width:992px){ .features { flex-direction:column; gap:20px; } .features div:not(:last-child)::after { display:none; } }
+ .services {
   text-align: center;
   padding: 80px 60px;
   background: #111; /* dark background */
@@ -449,235 +286,271 @@ nav .dropdown-menu a:hover {
     grid-template-columns: 1fr;
   }
 }
+    .digital-section { display:flex; align-items:center; justify-content:space-between; gap:40px; padding:40px 6% 40px 4%; background:#1a1a1a; border:1px solid #808080; border-radius:8px; min-height:300px; box-sizing:border-box; }
+    .digital-text { flex:1; color:#fff; }
+    .digital-text h2 { font-size:2.3rem; font-weight:700; margin-bottom:15px; }
+    .digital-text p { font-size:1rem; line-height:1.5; color:#bbb; margin-bottom:25px; max-width:500px; }
+    .btn-red { background:linear-gradient(to bottom,#ff3333,#cc0000); color:#fff; font-size:1rem; font-weight:600; padding:10px 24px; border-radius:40px; display:inline-block; text-decoration:none; transition:all 0.3s ease; }
+    .btn-red:hover { background:linear-gradient(to bottom,#cc0000,#ff3333); transform:scale(1.03); }
+    .digital-image { flex:1; text-align:right; }
+    .digital-image img { max-width:85%; height:auto; border-radius:8px; }
+    @media(max-width:992px){ .digital-section { flex-direction:column; text-align:center; padding:30px 5%; min-height:auto; } .digital-image { text-align:center; } }
+/* Portfolio Section */
+    .watch-brand-section { padding:60px 20px; font-family:Arial,sans-serif; }
+    .watch-brand-header { display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; margin-bottom:40px; }
+    .header-left { flex:0 0 45%; }
+    .header-left h4 { color:red; font-size:20px; margin:0; }
+    .header-left h2 { font-size:28px; font-weight:bold; margin:10px 0 0 0; }
+    .header-right { flex:0 0 50%; text-align:right; }
+    .header-right p { margin:0; font-size:16px; line-height:1.5; color:#333; }
+    .watch-brand-grid { display:flex; gap:20px; flex-wrap:wrap; justify-content:space-between; margin-top:30px; }
+    .watch-brand-grid div { flex:1 1 45%; height:400px; background-color:#ddd; display:flex; align-items:center; justify-content:center; border-radius:8px; transition:transform 0.3s, box-shadow 0.3s; overflow:hidden; }
+    .watch-brand-grid div img { width:100%; height:100%; object-fit:cover; border-radius:8px; }
+    .watch-brand-grid div:hover { transform:translateY(-5px); box-shadow:0 10px 20px rgba(0,0,0,0.15); }
+    .watch-brand-cta { text-align:center; margin-top:40px; }
+    .watch-brand-cta a { padding:12px 30px; background-color:red; color:#fff; text-decoration:none; font-weight:bold; border-radius:999px; transition:background-color 0.3s; }
+    .watch-brand-cta a:hover { background-color:darkred; }
+    @media(max-width:768px){ .watch-brand-header { flex-direction:column; gap:20px; } .header-left, .header-right { flex:1 1 100%; text-align:left; } .watch-brand-grid div { flex:1 1 100%; } }
 
-.digital-section { 
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 40px;                     /* smaller gap */
-  padding: 40px 6% 40px 4%;      /* reduced left/right padding */
-  background: #1a1a1a;           
-  border: 1px solid #808080;     /* Thin red border */
-  border-radius: 8px;
-  min-height: 300px;             /* reduced height */
-  box-sizing: border-box;
-}
+    /* Stats Section */
+    .stats-section { display:flex; justify-content:center; gap:15px; flex-wrap:wrap; margin:40px 0; }
+    .stats-section .stat { flex:0 0 200px; text-align:center; padding:15px; border:1px solid #e63946; border-radius:8px; background:transparent; color:#fff; }
+    .stats-section .stat h3 { font-size:32px; font-weight:700; margin:0 0 6px 0; color:#fff; }
+    .stats-section .stat p { font-size:14px; font-weight:600; margin:0; color:#e63946; }
+    @media(max-width:992px){ .stats-section { gap:12px; } .stats-section .stat { flex:0 0 160px; } }
+    @media(max-width:600px){ .stats-section { justify-content:space-evenly; } .stats-section .stat { flex:0 0 85%; } }
 
-/* Text Side */
-.digital-text {
-  flex: 1;
-  color: #fff;
-}
+   
 
-.digital-text h2 {
-  font-size: 2.3rem;
-  font-weight: 700;
-  margin-bottom: 15px;
-}
+    /* CTA Section */
+    .cta-section { background:#111; text-align:center; padding:80px 20px; }
+    .cta-section h2 { font-size:46px; margin-bottom:20px; }
+    .cta-section p { font-size:26px; margin-bottom:20px; }
+    .cta-section a { display:inline-block; padding:15px 30px; background:#ff0000; color:#fff; font-weight:bold; border-radius:999px; }
 
-.digital-text p {
-  font-size: 1rem;
-  line-height: 1.5;
-  color: #bbb;
-  margin-bottom: 25px;
-  max-width: 500px;              /* tighter width */
-}
 
-/* Button */
-.btn-red {
-  background: linear-gradient(to bottom, #ff3333, #cc0000);
-  color: #fff;
-  font-size: 1rem;
-  font-weight: 600;
-  padding: 10px 24px;
-  border-radius: 40px;
-  display: inline-block;
-  text-decoration: none;
-  transition: all 0.3s ease;
-}
-.btn-red:hover {
-  background: linear-gradient(to bottom, #cc0000, #ff3333);
-  transform: scale(1.03);
-}
 
-/* Image Side */
-.digital-image {
-  flex: 1;
-  text-align: right;
-}
-
-.digital-image img {
-  max-width: 85%;
-  height: auto;
-  border-radius: 8px;
-}
-
-/* Responsive */
+/* RESPONSIVE */
 @media (max-width: 992px) {
-  .digital-section {
-    flex-direction: column;
-    text-align: center;
-    padding: 30px 5%;
-    min-height: auto;
+  .hamburger { display: flex; }
+  nav { 
+    position: fixed; top: 80px; left: -100%; width: 100%; height: calc(100% - 80px);
+    flex-direction: column; gap: 20px; padding-top: 20px; background: rgba(0,0,0,0.95); transition: left 0.3s ease; 
   }
-  .digital-image {
-    text-align: center;
-  }
+  nav.show { left: 0; }
+  .dropdown-menu { position: static; display: none; }
+  .dropdown-wrapper.active .dropdown-menu { display: flex; flex-direction: column; width: 100%; }
+  .about { flex-direction: column; text-align: center; padding: 50px 5%; }
+  .about-images img { width: 100%; }
+  .hero-content { padding: 100px 20px 50px; text-align: center; }
 }
+</style>
+</head>
+<body>
 
-    /* Portfolio Section */
+<header>
+  <div class="head-text"><h3>SOCIAMIZE</h3></div>
+  <nav>
+    <a href="#home" class="active">Home</a>
+    <a href="#aboutus">About Us</a>
+    <a href="#reviews">Reviews</a>
 
-.watch-brand-section {
-  padding: 60px 20px;
-  font-family: Bebas Neue, sans-serif;
-}
+    <div class="dropdown-wrapper">
+      <a href="#" class="dropdown">Services</a>
+      <div class="dropdown-menu">
+        <a href="#service1">Custom Application Development Services</a>
+        <a href="#service2">Custom Website Development Services</a>
+        <a href="#service3">Creative Digital Marketing</a>
+        <a href="#service4">IT Consulting Business</a>
+        <a href="#service5">Woocommerce Website Development Services</a>
+        <a href="#service6">App Development Services</a>
+        <a href="#service7">Direct to Consumer (D2C) Marketing Services</a>
+        <a href="#service8">Healthcare App Development</a>
+      </div>
+    </div>
+    <a href="https://drive.google.com/file/d/1tQynfUJdyx85cAPj4rM6FBmo6THo79Wd/view?usp=sharing">Portfolio</a>
+    <a href="#contact">Contact Us</a>
+  </nav>
+  <div class="hamburger"><span></span><span></span><span></span></div>
+</header>
 
-.watch-brand-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  margin-bottom: 40px;
-}
+<section id="home" class="hero">
+  <div class="hero-content">
+    <div class="hero-text">
+      <h1>WE HELP <span><br>ENTREPRENEURS</span><br> MAKE MONEY <span><br>USING TECH</span></h1>
+      <p>Smart digital strategies to scale your business faster & smarter.</p>
+    </div>
+  </div>
+</section>
 
-.header-left {
-  flex: 0 0 45%; /* takes ~45% width on the left */
-}
+<section id="aboutus" class="about">
+  <div class="about-images">
+    <img src="abt-mid.jpg" alt="Office">
+  </div>
+  <div class="about-text">
+    <h2>ABOUT US</h2>
+    <h3>We grow brands that thrive in the digital era!</h3>
+    <p>We’re not just about experiences—we’re passionate about staying ahead of the curve. With years of experience and a proven track record, Sociamize is your go-to partner for innovative digital growth.</p>
+    <a href="#" class="btn">SCHEDULE YOUR EXPERT CONSULTATION NOW!</a>
+  </div>
+</section>
+<!-- Features -->
+<section class="features">
+  <div class="feature-option"><p>Collaborative<br>Planning</p></div>
+  <div class="feature-option"><p>Design<br>Thinking</p></div>
+  <div class="feature-option"><p>Technical<br>Expertise</p></div>
+  <div class="feature-option"><p>Launch and<br>Beyond</p></div>
+</section>
 
-.header-left h4 {
-  color: red;
-  font-size: 20px;
-  margin: 0;
-}
+<!-- Services -->
+<section class="services">
+  <h2>SERVICES WE OFFER</h2>
+  <h3>A Comprehensive Online Presence Is No Longer<br>A Luxury But A Necessity</h3>
+  <p>
+    We understand the challenges and opportunities businesses face in the digital realm. 
+    That’s why we offer a robust suite of digital solutions to strengthen your online presence, 
+    streamline your operations, and propel your business towards sustained growth.
+  </p>
+  <a href="#" class="btn">REQUEST A CALLBACK</a>
+</section>
 
-.header-left h2 {
-  font-size: 28px;
-  font-weight: bold;
-  margin: 10px 0 0 0;
-}
+ <!-- New Section 1 with Accordions -->
+<section class="services-section">
+  <div class="accordion">
 
-.header-right {
-  flex: 0 0 50%; /* takes ~50% width on the right */
-  text-align: right; /* aligns paragraph to the right */
-}
+    <div class="accordion-item active">
+      <div class="accordion-title">
+        <span>−</span> Website Design & Development
+      </div>
+      <div class="accordion-content">
+        Sociamize delivers bespoke web design and development solutions tailored to your business objectives. 
+        Our team crafts visually stunning, mobile-responsive websites optimized for user engagement and conversion. 
+        With a focus on intuitive navigation and compelling design elements, we ensure your online presence 
+        captivates your audience and drives results.
+      </div>
+    </div>
 
-.header-right p {
-  margin: 0;
-  font-size: 16px;
-  line-height: 1.5;
-  color: #333;
-}
+    <div class="accordion-item">
+      <div class="accordion-title">
+        <span>+</span> Search Engine Optimization (SEO)
+      </div>
+      <div class="accordion-content">
+        At Sociamize, we don't just boost your rankings but strategically position your brand to attract high-value customers.
+                  Leveraging meticulous keyword research and ethical SEO techniques, we craft compelling content that resonates with your
+                 target audience and propels you to the forefront of Google searches.
+      </div>
+    </div>
 
-.watch-brand-grid {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  margin-top: 30px;
-}
+    <div class="accordion-item">
+      <div class="accordion-title">
+        <span>+</span> Social Media Marketing
+      </div>
+      <div class="accordion-content">
+        We craft customized campaigns to expand your reach, engage your audience, and drive business growth.
+                 By analyzing your goals, competitors, and audience behaviour, we develop targeted brand management 
+                and advertising strategies to maximize your social media presence. In other words, Sociamize's strategic 
+                social media management empowers you to be heard.
+      </div>
+    </div>
 
-.watch-brand-grid div {
-  flex: 1 1 45%;
-  height: 300px;
-  background-color: #000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 8px;
-  transition: transform 0.3s, box-shadow 0.3s;
-}
+    <div class="accordion-item">
+      <div class="accordion-title">
+        <span>+</span> Pay Per Click (PPC) Management
+      </div>
+      <div class="accordion-content">
+        Sociamize's expert PPC management is your assured pathway to maximized visibility and a skyrocketing return on investment.
+                 Our certified specialists craft targeted ad campaigns, optimize bidding strategies, and monitor ROI to ensure optimal results.
+                 By leveraging seasonal trends, we drive high-volume leads and traffic to promote your products effectively.
+      </div>
+    </div>
 
-.watch-brand-grid div:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
-}
+    <div class="accordion-item">
+      <div class="accordion-title">
+        <span>+</span> Content Writing
+      </div>
+      <div class="accordion-content">
+        We boast a team of top-tier writers with extensive experience who understand the profound impact of words.
+                 Whether persuading or disseminating information, our writers wield the power of language to captivate and 
+                 engage your target audience effectively. They create engaging content that grabs attention and drives results.
+                We stay ahead of industry trends and adhere to Google's best practices, ensuring your content ranks high and gets seen. 
+               To put it another way, Sociamize's content mastery empowers you to evolve your website visitors into brand advocates.
+      </div>
+    </div>
 
-.watch-brand-cta {
-  text-align: center;
-  margin-top: 40px;
-}
+  </div>
 
-watch-brand-cta a {
-  padding: 12px 30px;
-  background-color: red;
-  color: #fff;
-  text-decoration: none;
-  font-weight: bold;
-  border-radius: 999px;
-  transition: background-color 0.3s;
-}
+  <div class="services-image">
+    <img src="accordion.jpg" alt="Services">
+  </div>
+</section>
 
-.watch-brand-cta a:hover {
-  background-color: darkred;
-}
+<!-- Digital Section -->
+<section class="digital-section">
+  <div class="digital-text">
+    <h2>Future-Proof Your Digital Presence</h2>
+    <p>We’re not just about experience—we’re passionate about staying ahead of the curve. With years of experience and a proven track record, Sociamize is your go-to partner for innovative digital marketing solutions.</p>
+    <a href="#" class="btn-red">CONTACT US</a>
+  </div>
+  <div class="digital-image">
+    <img src="services.jpg" alt="Team Discussion">
+  </div>
+</section>
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .watch-brand-header {
-    flex-direction: column;
-    gap: 20px;
-  }
+<!-- Portfolio -->
+<section class="watch-brand-section">
+  <div class="watch-brand-header">
+    <div class="header-left">
+      <h4>PORTFOLIO</h4>
+      <h2>Watch Your Brand Ascend with Sociamize</h2>
+    </div>
+    <p class="header-right">Sociamize is your trusted partner for result-driven digital marketing solutions. Our dedicated team is committed to maximizing your brand’s online success by delivering tailored strategies that drive growth and boost revenue.</p>
+  </div>
+  <div class="watch-brand-grid">
+    <div><img src="portfolio-1.png" alt=""></div>
+    <div><img src="portfolio-2.png" alt=""></div>
+    <div><img src="portfolio-3.png" alt=""></div>
+    <div><img src="portfolio-4.png" alt=""></div>
+  </div>
+  <div class="watch-brand-cta"><a href="#">View All</a></div>
+</section>
 
-  .header-left,
-  .header-right {
-    flex: 1 1 100%;
-    text-align: left;
-  }
+<!-- Stats Section -->
+<section class="stats-section">
+  <div class="stat"><h3 class="counter" data-target="50" data-suffix="+">0</h3><p>Happy Customers</p></div>
+  <div class="stat"><h3 class="counter" data-target="20" data-suffix="+">0</h3><p>Team Size</p></div>
+  <div class="stat"><h3 class="counter" data-target="95" data-suffix="%">0</h3><p>Success Rate</p></div>
+  <div class="stat"><h3 class="counter" data-target="100" data-suffix="+">0</h3><p>Positive Reviews</p></div>
+</section>
+<!-- Reviews Section -->
+<section id="reviews" class="review-carousel">
+  <div class="swiper mySwiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <img src="https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg" alt="1">
+      </div>
+      <div class="swiper-slide">
+        <img src="https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg" alt="2">
+      </div>
+      <div class="swiper-slide">
+        <img src="https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg" alt="3">
+      </div>
+      <div class="swiper-slide">
+        <img src="https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg" alt="4">
+      </div>
+      <div class="swiper-slide">
+        <img src="https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg" alt="5">
+      </div>
+    </div>
+    <!-- Pagination -->
+    <div class="swiper-pagination"></div>
+  </div>
+</section>
 
-  .watch-brand-grid div {
-    flex: 1 1 100%;
-  }
-}
+<!-- Swiper CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
 
-
-
-.stats-section {
-  display: flex;
-  justify-content: center;   /* center align */
-  gap: 15px;
-  flex-wrap: wrap;
-  margin: 40px 0;
-}
-
-.stats-section .stat {
-  flex: 0 0 200px;           /* fixed smaller width */
-  text-align: center;
-  padding: 15px;
-  border: 1px solid #e63946; /* Sociamize red */
-  border-radius: 8px;
-  background: transparent;
-  color: #fff;
-}
-
-.stats-section .stat h3 {
-  font-size: 32px;           /* smaller number size */
-  font-weight: 700;
-  margin: 0 0 6px 0;
-  color: #fff;
-}
-
-.stats-section .stat p {
-  font-size: 14px;           /* smaller label */
-  font-weight: 600;
-  margin: 0;
-  color: #e63946;            /* red text */
-}
-
-/* Responsive */
-@media (max-width: 992px) {
-  .stats-section { gap: 12px; }
-  .stats-section .stat { flex: 0 0 160px; }
-}
-@media (max-width: 600px) {
-  .stats-section { justify-content: space-evenly; }
-  .stats-section .stat { flex: 0 0 45%; }
-}
-
-
-
-
-    /* Testimonials Section */
-    .review-carousel {
+<style>
+.review-carousel {
   width: 100%;
   padding: 60px 0;
   background: #0a0a0a;
@@ -711,315 +584,47 @@ watch-brand-cta a {
 }
 
 .swiper-pagination-bullet {
-  background: #ccc !important;  /* Inactive dots gray */
+  background: #ccc !important;
   opacity: 1;
 }
 
 .swiper-pagination-bullet-active {
-  background: red !important;   /* Active dot red */
+  background: red !important;
   opacity: 1;
 }
+</style>
 
-/* CTA Section */
-    .cta-section { background:#đ; text-align:center; padding:80px 20px; }
-    .cta-section h2 { font-size:46px; margin-bottom:20px; }
-    .cta-section p { font-size:26px; margin-bottom:20px; }
-    .cta-section a { display:inline-block; padding:15px 30px; background:#ff0000; color:#fff; font-weight:bold; border-radius:999px; 
-
-
-
-    /* Contact */
-    #contact { text-align: center; padding: 80px 60px; }
-    #contact h2 { color: #ff0000; font-size: 1rem; margin-bottom: 10px; }
-    #contact h3 { font-size: 1.8rem; font-weight: 700; margin-bottom: 20px; }
-    form { max-width: 500px; margin: auto; display: flex; flex-direction: column; gap: 15px; }
-    form input, form textarea {
-      padding: 12px; border: none; border-radius: 6px;
-    }
-
-    /* Footer */
-
-
-    /* Responsive */
-    @media(max-width: 992px){
-      .hero-content { flex-direction: column; text-align: center; padding: 140px 30px 60px; }
-      .hero-text { max-width: 100%; }
-      .about { flex-direction: column; padding: 60px 30px; }
-      .features { flex-direction: column; gap: 15px; }
-      nav { display: none; }
-      .services-section, .digital-section { grid-template-columns: 1fr; text-align: center; }
-      .services-image, .digital-image { order: -1; }
-    }
-  </style>
-</head>
-<body>
-
-  <!-- Header -->
-  <header>
-  <div class="logo">
-    <img src="logo-final.png" alt="Logo">
-  </div>
-  <nav>
-    <a href="#home" class="active">Home</a>
-    <a href="#aboutus">About Us</a>
-    <a href="#reviews">Reviews</a>
-
-    <div class="dropdown-wrapper">
-      <a href="#" class="dropdown">Services</a>
-      <div class="dropdown-menu">
-        <a href="#service1">Custom Application Development Services</a>
-        <a href="#service2">Custom Website Development Services</a>
-        <a href="#service3">Creative Digital Marketing</a>
-        <a href="#service4">IT Consulting Business</a>
-        <a href="#service5">Woocommerce Website Development Services</a>
-        <a href="#service6">App Development Services</a>
-        <a href="#service7">Direct to Consumer (D2C) Marketing Services</a>
-        <a href="#service8">Healthcare App Development</a>
-      </div>
-    </div>
-    <a href="https://drive.google.com/file/d/1tQynfUJdyx85cAPj4rM6FBmo6THo79Wd/view?usp=sharing">Portfolio</a>
-    <a href="#contact">Contact Us</a>
-  </nav>
-</header>
-
-
-
-
-
-  <!-- Hero -->
-  <section id="home" class="hero">
-    <div class="hero-content">
-      <div class="hero-text">
-        <h1>We Help <span>ENTREPRENEURS</span> Make Money <span>Using Tech</span></h1>
-        <p>Smart digital strategies to scale your business faster & smarter.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- About -->
-  <section id="aboutus" class="about">
-  <div class="about-images">
-    <img src="abt-mid.jpg" alt="Office">
-  </div>
-
-  <div class="about-text">
-    <h2>ABOUT US</h2>
-    <h3>We grow brands that thrive in the digital era!</h3>
-    <p>
-      We’re not just about experiences—we’re passionate about staying ahead of the curve. With years of experience and a proven track record, Sociamize is your go-to partner for innovative digital growth..
-    </p>
-    <a href="#" class="btn">SCHEDULE YOUR EXPERT CONSULTATION NOW!</a>
-  </div>
-</section>
-
-  <!-- Features -->
-  <section class="features">
-  <div class="feature-option">
-    <p>Collaborative<br>Planning</p>
-  </div>
-  <div class="feature-option">
-    <p>Design<br>Thinking</p>
-  </div>
-  <div class="feature-option">
-    <p>Technical<br>Expertise</p>
-  </div>
-  <div class="feature-option">
-    <p>Launch and<br>Beyond</p>
-  </div>
-</section>
-
-
-
-  <!-- Services -->
-  <section class="services">
-  <h2>SERVICES WE OFFER</h2>
-  <h3>A Comprehensive Online Presence Is No Longer<br>A Luxury But A Necessity</h3>
-  <p>
-    We understand the challenges and opportunities businesses face in the digital realm. 
-    That’s why we offer a robust suite of digital solutions to strengthen your online presence, 
-    streamline your operations, and propel your business towards sustained growth.
-  </p>
-  <a href="#" class="btn">REQUEST A CALLBACK</a>
-</section>
-
-
-  <!-- New Section 1 with Accordions -->
-<section class="services-section">
-  <div class="accordion">
-
-    <div class="accordion-item active">
-      <div class="accordion-title">
-        <span>−</span> Website Design & Development
-      </div>
-      <div class="accordion-content">
-        Sociamize delivers bespoke web design and development solutions tailored to your business objectives. 
-        Our team crafts visually stunning, mobile-responsive websites optimized for user engagement and conversion. 
-        With a focus on intuitive navigation and compelling design elements, we ensure your online presence 
-        captivates your audience and drives results.
-      </div>
-    </div>
-
-    <div class="accordion-item">
-      <div class="accordion-title">
-        <span>+</span> Search Engine Optimization (SEO)
-      </div>
-      <div class="accordion-content">
-        At Sociamize, we don't just boost your rankings but strategically position your brand to attract high-value customers.
-        Leveraging meticulous keyword research and ethical SEO techniques, we craft compelling content that resonates with your
-        target audience and propels you to the forefront of Google searches.
-      </div>
-    </div>
-
-    <div class="accordion-item">
-      <div class="accordion-title">
-        <span>+</span> Social Media Marketing
-      </div>
-      <div class="accordion-content">
-        We craft customized campaigns to expand your reach, engage your audience, and drive business growth.
-        By analyzing your goals, competitors, and audience behaviour, we develop targeted brand management 
-        and advertising strategies to maximize your social media presence. In other words, Sociamize's strategic 
-        social media management empowers you to be heard.
-      </div>
-    </div>
-
-    <div class="accordion-item">
-      <div class="accordion-title">
-        <span>+</span> Pay Per Click (PPC) Management
-      </div>
-      <div class="accordion-content">
-        Sociamize's expert PPC management is your assured pathway to maximized visibility and a skyrocketing return on investment.
-        Our certified specialists craft targeted ad campaigns, optimize bidding strategies, and monitor ROI to ensure optimal results.
-        By leveraging seasonal trends, we drive high-volume leads and traffic to promote your products effectively.
-      </div>
-    </div>
-
-    <div class="accordion-item">
-      <div class="accordion-title">
-        <span>+</span> Content Writing
-      </div>
-      <div class="accordion-content">
-        We boast a team of top-tier writers with extensive experience who understand the profound impact of words.
-        Whether persuading or disseminating information, our writers wield the power of language to captivate and 
-        engage your target audience effectively. They create engaging content that grabs attention and drives results.
-        We stay ahead of industry trends and adhere to Google's best practices, ensuring your content ranks high and gets seen. 
-        To put it another way, Sociamize's content mastery empowers you to evolve your website visitors into brand advocates.
-      </div>
-    </div>
-
-  </div>
-
-  <div class="services-image">
-    <img src="accordion.jpg" alt="Services">
-  </div>
-</section>
-
-  <!-- New Section 2 -->
-  <section class="digital-section">
-  <div class="digital-text">
-    <h2>Future-Proof Your Digital Presence</h2>
-    <p>
-      We’re not just about experience—we’re passionate about staying ahead of the curve. 
-      With years of experience and a proven track record, Sociamize is your go-to partner for innovative digital marketing solutions.
-    </p>
-    <a href="#" class="btn-red">CONTACT US</a>
-  </div>
-
-  <div class="digital-image">
-    <img src="services.jpg" alt="Team Discussion">
-  </div>
-</section>
-
-  <!-- Portfolio / Showcase -->
-  <section class="watch-brand-section" style="padding: 60px 20px; font-family: Arial, sans-serif;">
-  <div class="watch-brand-header" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; margin-bottom: 40px;">
-    <div>
-      <h4 style="color: #ff0000; font-size: 1.2rem;font-weight: 500; margin-bottom: 15px; letter-spacing: 2px;">PORTFOLIO</h4>         
-      <h2 style="font-size: 28px; font-weight: bold; margin: 10px 0 0 0;">Watch Your Brand Ascend with Sociamize</h2>
-    </div>
-    <p style="max-width: 60%; margin: 0;">
-      Sociamize is your trusted partner for result-driven digital marketing solutions. Our dedicated team is committed to maximizing your brand’s online success by delivering tailored strategies that drive growth and boost revenue.
-    </p>
-  </div>
-
-  <div class="watch-brand-grid" style="display: flex; gap: 20px; flex-wrap: wrap; justify-content: space-between;">
-  
-  <div style="flex: 1 1 45%; height: 400px; overflow: hidden; border-radius: 10px;">
-    <img src="portfolio-1.png" alt="Image 1" style="width:100%; height:100%; object-fit: cover;">
-  </div>
-
-  <div style="flex: 1 1 45%; height: 400px; overflow: hidden; border-radius: 10px;">
-    <img src="portfolio-2.png" alt="Image 2" style="width:100%; height:100%; object-fit: cover;">
-  </div>
-
-  <div style="flex: 1 1 45%; height: 400px; overflow: hidden; border-radius: 10px;">
-    <img src="portfolio-3.png" alt="Image 3" style="width:100%; height:100%; object-fit: cover;">
-  </div>
-
-  <div style="flex: 1 1 45%; height: 400px; overflow: hidden; border-radius: 10px;">
-    <img src="portfolio-4.png" alt="Image 4" style="width:100%; height:100%; object-fit: cover;">
-  </div>
-
-</div>
-
-
-  <div class="watch-brand-cta" style="text-align: center; margin-top: 40px;">
-    <a href="#" style="padding: 12px 30px; background-color: red; color: #fff; text-decoration: none; font-weight: bold; border-radius: 999px;">View All</a>
-  </div>
-</section>
-
-
-  <!-- Statistics Section -->
-  <section class="stats-section">
-  <div class="stat">
-    <h3 class="counter" data-target="50" data-suffix="+">0</h3>
-    <p>Happy Customers</p>
-  </div>
-  <div class="stat">
-    <h3 class="counter" data-target="20" data-suffix="+">0</h3>
-    <p>Team Size</p>
-  </div>
-  <div class="stat">
-    <h3 class="counter" data-target="95" data-suffix="%">0</h3>
-    <p>Success Rate</p>
-  </div>
-  <div class="stat">
-    <h3 class="counter" data-target="100" data-suffix="+">0</h3>
-    <p>Positive Reviews</p>
-  </div>
-</section>
-
-
-  <!-- Testimonials Section -->
- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
-
-<section id="reviews" class="review-carousel">
-  <div class="swiper mySwiper">
-    <div class="swiper-wrapper">
-      <div class="swiper-slide"><img src="https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg" alt="1"></div>
-      <div class="swiper-slide"><img src="https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg" alt="2"></div>
-      <div class="swiper-slide"><img src="https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg" alt="3"></div>
-      <div class="swiper-slide"><img src="https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg" alt="4"></div>
-      <div class="swiper-slide"><img src="https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg" alt="5"></div>
-    </div>
-    <!-- Dots -->
-    <div class="swiper-pagination"></div>
-  </div>
-</section>
-
+<!-- Swiper JS -->
 <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+<script>
+  var swiper = new Swiper(".mySwiper", {
+    slidesPerView: 3,
+    spaceBetween: 30,
+    centeredSlides: true,
+    loop: true,
+    autoplay: {
+      delay: 3000,
+      disableOnInteraction: false,
+    },
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+    breakpoints: {
+      0: { slidesPerView: 1 },
+      600: { slidesPerView: 2 },
+      992: { slidesPerView: 3 },
+    },
+  });
+</script>
 
-<!-- CTA Section -->
-  <section class="cta-section">
-    <h2>Let's Work Together</h2>
-    <p>Ready to elevate your brand to the next level? Get in touch with us today.</p>
-    <a href="#">Contact Us</a>
-  </section
+<section class="cta-section">
+  <h2>Let's Work Together</h2>
+  <p>Ready to elevate your brand to the next level? Get in touch with us today.</p>
+  <a href="#">Contact Us</a>
+</section>
 
-
-  <!-- Contact -->
-  
-
- <style>
+<style>
     body { margin:0; font-family: 'Inter', sans-serif; background:#000; color:#fff; line-height:1.6; }
     a { text-decoration:none; color:inherit; }
     h2 { font-family:'Roboto Slab', serif; font-weight:700; }
@@ -1030,7 +635,7 @@ watch-brand-cta a {
     .container { max-width:1200px; margin:0 auto; padding:0 20px; }
     .grid { display:grid; gap:20px; }
     @media(min-width:768px){ .grid-2 { grid-template-columns:repeat(2,1fr); } .grid-3 { grid-template-columns:repeat(3,1fr); } .grid-4 { grid-template-columns:repeat(4,1fr); } }
-    .footer { background:#000; padding:60px 20px; text-align:left; }
+    .footer { background:#111; padding:60px 20px; text-align:left; }
     .footer h4 { color:#ff0000; margin-bottom:20px; }
     .footer p { color:#ccc; margin-bottom:10px; }
     .footer a { color:#ccc; display:block; margin-bottom:8px; transition:0.3s; }
@@ -1038,41 +643,28 @@ watch-brand-cta a {
     .social-icons { display:flex; gap:15px; margin-top:20px; }
     .social-icons a { font-size:1.5rem; color:#ccc; transition:0.3s; }
     .social-icons a:hover { color:#ff3333; }
-    .copyright { text-align:center; margin-top:20px; margin-bottom:-50px; color:#666; font-size:0.9rem; }
+    .copyright { text-align:center;margin-bottom:-70px; margin-top:60px; color:#666; font-size:0.9rem; }
   </style>
 
 <!-- Footer Section -->
 <footer class="footer">
   <div class="container grid grid-4">
-    <!-- Brand / Logo -->
-    <div>
-      <img src="logo-final.png" alt="Your Brand Logo" style="width:200px; margin-bottom:-50px; margin-top:-90px;">
-      <p>Creating innovative digital experiences to elevate your business.</p>
-    </div>
-
-    <!-- Quick Links -->
+    <div><img src="logo-final.png" alt="Logo" style="width:200px; margin-bottom:-50px; margin-top:-90px;"><p>Creating innovative digital experiences to elevate your business.</p></div>
     <div>
       <h4>Quick Links</h4>
-      <div class="footer-links">
-        <a href="#home">Home</a>
-        <a href="#aboutus">About</a>
-        <a href="#">Services</a>
-        <a href="#contact">Contact</a>
-      </div>
+      <a href="#home">Home</a>
+      <a href="#aboutus">About</a>
+      <a href="#">Services</a>
+      <a href="#">Portfolio</a>
+      <a href="#contact">Contact</a>
     </div>
-
-    <!-- Resources -->
     <div>
       <h4>Resources</h4>
-      <div class="footer-links">
-        <a href="#">Blog</a>
-        <a href="#">Case Studies</a>
-        <a href="#">FAQs</a>
-        <a href="#">Support</a>
-      </div>
+      <a href="#">Blog</a>
+      <a href="#">Case Studies</a>
+      <a href="#">FAQs</a>
+      <a href="#">Support</a>
     </div>
-
-    <!-- Social Media -->
     <div>
       <h4>Follow Us</h4>
       <div class="social-icons">
@@ -1083,7 +675,6 @@ watch-brand-cta a {
       </div>
     </div>
   </div>
-
   <div class="copyright">
     &copy; 2025 Sociamize. All Rights Reserved.
   </div>
@@ -1091,112 +682,85 @@ watch-brand-cta a {
 
 
 
+<script>
+// HERO PARALLAX
+const hero = document.querySelector('.hero');
+const heroContent = document.querySelector('.hero-content');
+let currentScale = 1;
+let currentBgScale = 120;
+function heroParallax() {
+  const scrollY = window.scrollY;
+  let targetScale = 1 - scrollY / 2000;
+  if(targetScale < 0.85) targetScale = 0.85;
+  currentScale += (targetScale - currentScale) * 0.1;
+  heroContent.style.transform = `scale(${currentScale})`;
+  let targetBgScale = 120 - scrollY / 10;
+  if(targetBgScale < 100) targetBgScale = 100;
+  currentBgScale += (targetBgScale - currentBgScale) * 0.1;
+  hero.style.backgroundSize = `${currentBgScale}%`;
+  requestAnimationFrame(heroParallax);
+}
+heroParallax();
 
+// MOBILE MENU TOGGLE
+const hamburger = document.querySelector('.hamburger');
+const nav = document.querySelector('nav');
+const dropdown = document.querySelector('.dropdown-wrapper');
 
-
-
-
-
-
-
-
-  <!-- Hero Parallax -->
-  <script>
-    const hero = document.querySelector('.hero');
-    const heroContent = document.querySelector('.hero-content');
-    let currentScale = 1;
-    let currentBgScale = 120;
-
-    function heroParallax() {
-      const scrollY = window.scrollY;
-      let targetScale = 1 - scrollY / 2000;
-      if(targetScale < 0.85) targetScale = 0.85;
-      currentScale += (targetScale - currentScale) * 0.1;
-      heroContent.style.transform = `scale(${currentScale})`;
-
-      let targetBgScale = 120 - scrollY / 10;
-      if(targetBgScale < 100) targetBgScale = 100;
-      currentBgScale += (targetBgScale - currentBgScale) * 0.1;
-      hero.style.backgroundSize = `${currentBgScale}%`;
-
-      requestAnimationFrame(heroParallax);
-    }
-    heroParallax();
-
-document.addEventListener("DOMContentLoaded", () => {
-  const items = document.querySelectorAll(".accordion-item");
-
-  items.forEach(item => {
-    const title = item.querySelector(".accordion-title");
-    title.addEventListener("click", () => {
-      // Close all
-      items.forEach(i => {
-        i.classList.remove("active");
-        i.querySelector(".accordion-title span").textContent = "+";
-      });
-      // Open clicked
-      item.classList.add("active");
-      item.querySelector(".accordion-title span").textContent = "−";
-    });
-  });
+hamburger.addEventListener('click', (e) => {
+  e.stopPropagation();
+  nav.classList.toggle('show');
 });
 
-document.addEventListener("DOMContentLoaded", () => {
+// MOBILE DROPDOWN
+dropdown.addEventListener('click', (e) => {
+  e.stopPropagation();
+  dropdown.classList.toggle('active');
+});
+
+// Close menu on click outside or scroll
+document.addEventListener('click', (e) => {
+  if (!nav.contains(e.target) && !hamburger.contains(e.target)) {
+    nav.classList.remove('show');
+    dropdown.classList.remove('active');
+  }
+});
+window.addEventListener('scroll', () => {
+  nav.classList.remove('show');
+  dropdown.classList.remove('active');
+});
+
+// Counter animation
   const counters = document.querySelectorAll(".counter");
-  const speed = 200; // lower = faster
-
-  const animateCounters = () => {
-    counters.forEach(counter => {
-      const target = +counter.getAttribute("data-target");
-      const suffix = counter.getAttribute("data-suffix") || "";
-      let count = 0;
-
-      const updateCount = () => {
-        const increment = Math.ceil(target / speed);
-        if (count < target) {
-          count += increment;
-          counter.innerText = count > target ? target + suffix : count + suffix;
-          setTimeout(updateCount, 20);
-        } else {
-          counter.innerText = target + suffix;
-        }
-      };
-
-      updateCount();
-    });
-  };
-
-  // Run when section is visible
+  const speed = 200;
   const statsSection = document.querySelector(".stats-section");
   const observer = new IntersectionObserver(entries => {
-    if (entries[0].isIntersecting) {
-      animateCounters();
+    if(entries[0].isIntersecting){
+      counters.forEach(counter => {
+        const target = +counter.dataset.target;
+        const suffix = counter.dataset.suffix || "";
+        let count=0;
+        const update = () => {
+          const increment=Math.ceil(target/speed);
+          if(count<target){ count+=increment; counter.innerText=count>target?target+suffix:count+suffix; setTimeout(update,20);}
+          else counter.innerText=target+suffix;
+        }
+        update();
+      });
       observer.disconnect();
     }
-  }, { threshold: 0.3 });
-
+  }, { threshold:0.3 });
   observer.observe(statsSection);
-});
 
+  // Accordion
+  const accordionItems = document.querySelectorAll('.accordion-item');
+  accordionItems.forEach(item => {
+    item.querySelector('.accordion-title').addEventListener('click', () => {
+      item.classList.toggle('active');
+    });
+  });
 
-var swiper = new Swiper(".mySwiper", {
-  slidesPerView: 3,
-  spaceBetween: 30,
-  centeredSlides: true,
-  loop: true,
-  autoplay: {
-    delay: 3000,
-    disableOnInteraction: false,
-  },
-  pagination: {
-    el: ".swiper-pagination",
-    clickable: true,
-  },
-});
  </script>
+
 </body>
 </html>
-
-
-
-

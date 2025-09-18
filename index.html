@@ -351,9 +351,9 @@ nav .dropdown-menu a:hover { color: red; }
 <header>
   <div class="head-text"><h3>SOCIAMIZE</h3></div>
   <nav>
-    <a href="#home" class="active">Home</a>
-    <a href="#aboutus">About Us</a>
-    <a href="#reviews">Reviews</a>
+    <a href="/" id="home-link">Home</a>
+    <a href="#aboutus" class="scroll-link">About Us</a>
+    <a href="#reviews" class="scroll-link">Reviews</a>
 
     <div class="dropdown-wrapper">
       <a href="" class="dropdown">Services</a>
@@ -757,11 +757,30 @@ window.addEventListener('scroll', () => {
       item.classList.toggle('active');
     });
   });
+// Home link
+document.getElementById('home-link').addEventListener('click', function(e) {
+  e.preventDefault(); // prevent page reload
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  history.replaceState(null, null, '/'); // keeps URL clean
+});
 
+// All other scroll links
+document.querySelectorAll('.scroll-link').forEach(link => {
+  link.addEventListener('click', function(e) {
+    e.preventDefault();
+    const targetID = this.getAttribute('href').substring(1);
+    const targetEl = document.getElementById(targetID);
+    if (targetEl) {
+      targetEl.scrollIntoView({ behavior: 'smooth' });
+      history.replaceState(null, null, '/' + targetID); // keeps URL clean
+    }
+  });
+});
  </script>
 
 </body>
 </html>
+
 
 
 

@@ -236,7 +236,7 @@ button:hover {
   .hamburger { display: flex; }
   nav { 
     position: fixed; top: 80px; left: -100%; width: 100%; height: calc(100% - 80px);
-    flex-direction: column; gap: 20px; padding-top: 20px; background: rgba(0,0,0,0.95); transition: left 0.3s ease; 
+    flex-direction: column; gap: 20px; padding-top: 20px; background: rgba(0,0,0,0.); transition: left 0.3s ease; 
   }
   nav.show { left: 0; }
   .dropdown-menu { position: static; display: none; }
@@ -245,7 +245,29 @@ button:hover {
   .about-images img { width: 100%; }
   .hero-content { padding: 100px 20px 50px; text-align: center; }
 }
+    .header {
+    justify-content: center;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+  }
 
+  /* move hamburger to left */
+  .hamburger {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  /* center logo text */
+  .head-text {
+    position: relative;
+    text-align: center;
+    flex: 1;
+  }
+}
   </style>
 </head>
 <body>

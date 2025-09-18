@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Abous Us | Sociamize</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Roboto+Slab:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+
+body, html { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; background: #000; color: #fff; }
+a { text-decoration: none; color: inherit; }
+img { max-width: 100%; display: block; }
+
+/* HEADER */
+header {
+   background: rgba(0, 0, 0, 0.2);
+  padding: 5px 30px;
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center;
+  position: fixed; 
+  top: 20px; 
+  left: 20px; 
+  right: 20px; 
+  z-index: 1000;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  border-radius: 12px;
+  backdrop-filter: blur(5px);
+  height: auto; 
+}
+.head-text h3{ font-size: 1.2rem; color: #ff0000; letter-spacing: 2px; margin-bottom: 15px; font-weight: 600; }
+/* Nav */
+nav {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+}
+nav > a,
+nav > .dropdown-wrapper > a.dropdown {
+  color: #fff;
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 8px 15px;
+  position: relative;
+  transition: color 0.3s;
+}
+nav > a::before,
+nav > .dropdown-wrapper > a.dropdown::before { content: "•"; font-size: 16px; color: #fff; opacity: 0.5; margin-right: 6px; transition: color 0.3s; }
+nav > a.active::before { color: red; opacity: 1; }
+nav > a:hover, nav > .dropdown-wrapper > a.dropdown:hover { color: red; }
+nav > a:hover::before, nav > .dropdown-wrapper > a.dropdown:hover::before { color: red; }
+nav > .dropdown-wrapper > a.dropdown::after { content: "⮟"; font-size: 10px; margin-left: 4px; color: red; }
+.dropdown-wrapper { position: relative; }
+nav .dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 350px;
+  display: flex;
+  flex-direction: column;
+  background: #000;
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
+  transition: all 0.3s ease;
+  z-index: 100;
+}
+.dropdown-wrapper:hover .dropdown-menu { opacity: 10; transform: translateY(0); pointer-events: auto; }
+nav .dropdown-menu a { color: #fff; padding: 12px 20px; transition: color 0.3s; }
+nav .dropdown-menu a:hover { color: red; }
+
+/* Hamburger */
+.hamburger { display: none; flex-direction: column; justify-content: space-between; width: 24px; height: 18px; cursor: pointer; z-index: 1010; }
+.hamburger span { display: block; height: 3px; background: #fff; border-radius: 2px; }
+
+/* HERO / INTRO */
+.hero-about {
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  text-align:center; padding:150px 20px 80px; background: url("http://trycyfer.com/wp-content/uploads/2022/03/about-bg.jpg") no-repeat center center/cover;
+}
+.hero-about h2 { color:#ff0000; font-size:1.2rem; letter-spacing:2px; margin-bottom:10px; }
+.hero-about h1 { font-size:2.5rem; margin-bottom:20px; line-height:1.2; }
+.hero-about p { color:#ccc; font-size:1rem; max-width:700px; }
+
+/* ABOUT SECTION */
+.about-section {
+  display:flex; gap:60px; padding:60px 5%; flex-wrap:wrap; align-items:flex-start; background:#000;
+}
+.about-left, .about-right { flex:1; min-width:300px; }
+.about-left img { border-radius:12px; }
+.about-right h2 { color:#ff0000; font-size:1rem; letter-spacing:2px; margin-bottom:5px; font-weight:500; }
+.about-right h3 { font-size:2rem; margin-bottom:20px; }
+.about-right p { font-size:1rem; line-height:1.6; color:#ccc; margin-bottom:15px; }
+.about-right ul { list-style:none; padding:0; margin:0; }
+.about-right ul li { margin-bottom:10px; padding-left:20px; position:relative; }
+.about-right ul li::before { content:"•"; position:absolute; left:0; color:#ff0000; }
+
+/* TIMELINE / JOURNEY */
+.timeline {
+  padding:60px 5%; background:#111;
+}
+.timeline h2 { color:#ff0000; font-size:1rem; letter-spacing:2px; font-weight:500; margin-bottom:10px; }
+.timeline h3 { font-size:2rem; margin-bottom:40px; text-align:center; }
+.timeline-items { display:flex; flex-direction:column; gap:40px; position:relative; }
+.timeline-item { display:flex; gap:20px; flex-wrap:wrap; }
+.timeline-item::before { content:""; position:absolute; left:50%; top:0; width:2px; height:100%; background:#ff0000; transform:translateX(-50%); z-index:-1; }
+.timeline-item:nth-child(odd) { flex-direction:row-reverse; }
+.timeline-item-content { flex:1; background:#000; padding:20px; border-radius:12px; position:relative; }
+.timeline-item-content::after { content:""; position:absolute; width:15px; height:15px; background:#ff0000; border-radius:50%; top:20px; left:-7px; }
+.timeline-item:nth-child(odd) .timeline-item-content::after { left:auto; right:-7px; }
+
+/* CLIENT LOGOS */
+.clients {
+  padding:60px 5%; background:#000; text-align:center;
+}
+.clients h2 { color:#ff0000; font-size:1rem; letter-spacing:2px; font-weight:500; margin-bottom:10px; }
+.clients h3 { font-size:2rem; margin-bottom:40px; }
+.client-logos { display:flex; flex-wrap:wrap; justify-content:center; gap:40px; align-items:center; }
+.client-logos img { width:120px; border-radius:10px; transition:0.3s; }
+.client-logos img:hover { filter:none; }
+
+/* FOOTER */
+.footer { background:#111; padding:60px 20px; text-align:left; }
+.footer h4 { color:#ff0000; margin-bottom:20px; }
+.footer p { color:#ccc; margin-bottom:10px; }
+.footer a { color:#ccc; display:block; margin-bottom:8px; transition:0.3s; }
+.footer a:hover { color:#ff3333; }
+.social-icons { display:flex; gap:15px; margin-top:20px; }
+.social-icons a img { width:24px; }
+.copyright { text-align:center; margin-top:60px; color:#666; font-size:0.9rem; }
+
+/* RESPONSIVE */
+@media (max-width: 992px) {
+  .hamburger { display: flex; }
+  nav { 
+    position: fixed; top: 80px; left: -100%; width: 100%; height: calc(100% - 80px);
+    flex-direction: column; gap: 20px; padding-top: 20px; background: rgba(0,0,0,0.95); transition: left 0.3s ease; 
+  }
+  nav.show { left: 0; }
+  .dropdown-menu { position: static; display: none; }
+  .dropdown-wrapper.active .dropdown-menu { display: flex; flex-direction: column; width: 100%; }
+  .about { flex-direction: column; text-align: center; padding: 50px 5%; }
+  .about-images img { width: 100%; }
+  .hero-content { padding: 100px 20px 50px; text-align: center; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="head-text"><h3>SOCIAMIZE</h3></div>
+  <nav>
+    <a href="index.html#home" class="active">Home</a>
+    <a href="about.html#top" class="about-link">About Us</a>
+    <a href="index.html#reviews">Reviews</a>
+    <div class="dropdown-wrapper">
+      <a href="#" class="dropdown">Services</a>
+      <div class="dropdown-menu">
+        <a href="#service1">Custom Application Development Services</a>
+        <a href="#service2">Custom Website Development Services</a>
+        <a href="#service3">Creative Digital Marketing</a>
+        <a href="#service4">IT Consulting Business</a>
+        <a href="#service5">E-commerce Website Development Services</a>
+        <a href="#service6">App Development Services</a>
+      </div>
+    </div>
+    <a href="https://drive.google.com/file/d/1tQynfUJdyx85cAPj4rM6FBmo6THo79Wd/view?usp=sharing">Portfolio</a>
+    <a href="/contact.html">Contact Us</a>
+  </nav>
+  <div class="hamburger"><span></span><span></span><span></span></div>
+</header>
+
+<!-- HERO / INTRO -->
+<section class="hero-about">
+  <h2>ABOUT US</h2>
+  <h1>Building Brands That Thrive Online</h1>
+  <p>At Sociamize, we help businesses grow with innovative digital strategies, creative content, and measurable results.</p>
+</section>
+
+<!-- ABOUT SECTION -->
+<section class="about-section">
+  <div class="about-left">
+    <img src="accordion.jpg" alt="Sociamize Team">
+  </div>
+  <div class="about-right">
+    <h2>WHO WE ARE</h2>
+    <h3>Driving Digital Success</h3>
+    <p>Sociamize is a full-service digital agency helping brands grow online with custom strategies, creative solutions, and measurable results.</p>
+    <p>Our team specializes in:</p>
+    <ul>
+      <li>Digital Marketing Strategy</li>
+      <li>SEO & Social Media Marketing</li>
+      <li>Web & App Development</li>
+      <li>Creative Content & Branding</li>
+      <li>Analytics & Conversion Optimization</li>
+    </ul>
+    <p>We’re passionate about helping businesses build meaningful connections with their audience and achieve tangible growth.</p>
+  </div>
+</section>
+
+<!-- TIMELINE / OUR JOURNEY -->
+<section class="timeline">
+  <h2>OUR JOURNEY</h2>
+  <h3>How Sociamize Became a Leading Digital Agency</h3>
+  <div class="timeline-items">
+    <div class="timeline-item">
+      <div class="timeline-item-content">
+        <h4>2021</h4>
+        <p>Founded Sociamize with a vision to revolutionize digital marketing for small businesses.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-item-content">
+        <h4>2023</h4>
+        <p>Expanded services to web and app development, serving multiple international clients.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-item-content">
+        <h4>2024</h4>
+        <p>Achieved 100+ successful campaigns and gained recognition as a trusted digital partner.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-item-content">
+        <h4>2025</h4>
+        <p>Leading full-service digital agency in India with global clientele.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLIENT LOGOS -->
+<section class="clients">
+  <h2>OUR CLIENTS</h2>
+  <h3>Trusted By Brands Worldwide</h3>
+  <div class="client-logos">
+    <img src="1.png" alt="Client 1">
+    <img src="2.png" alt="Client 2">
+    <img src="3.png" alt="Client 3">
+    <img src="4.png" alt="Client 4">
+    <img src="5.png" alt="Client 5">
+  </div>
+</section>
+
+<!-- FOOTER -->
+<style>
+    body { margin:0; font-family: 'Inter', sans-serif; background:#000; color:#fff; line-height:1.6; }
+    a { text-decoration:none; color:inherit; }
+    h2 { font-family:'Roboto Slab', serif; font-weight:700; }
+    h3 { font-family:'Roboto Slab', serif; font-weight:700; }
+    p { font-family:'Inter', sans-serif; color:#ccc; }
+    button { cursor:pointer; }
+    img { max-width:100%; display:block; }
+    .container { max-width:1200px; margin:0 auto; padding:0 20px; }
+    .grid { display:grid; gap:20px; }
+    @media(min-width:768px){ .grid-2 { grid-template-columns:repeat(2,1fr); } .grid-3 { grid-template-columns:repeat(3,1fr); } .grid-4 { grid-template-columns:repeat(4,1fr); } }
+    .footer { background:#111; padding:60px 20px; text-align:left; }
+    .footer h4 { color:#ff0000; margin-bottom:20px; }
+    .footer p { color:#ccc; margin-bottom:10px; }
+    .footer a { color:#ccc; display:block; margin-bottom:8px; transition:0.3s; }
+    .footer a:hover { color:#ff3333; }
+    .social-icons { display:flex; gap:15px; margin-top:20px; }
+    .social-icons a { font-size:1.5rem; color:#ccc; transition:0.3s; }
+    .social-icons a:hover { color:#ff3333; }
+    .copyright { text-align:center;margin-bottom:-50px; margin-top:60px; color:#666; font-size:0.9rem; }
+  </style>
+
+<!-- Footer Section -->
+<footer class="footer">
+  <div class="container grid grid-4">
+    <div><img src="logo-final.png" alt="Logo" style="width:200px; margin-bottom:-50px; margin-top:-90px;"><p>Creating innovative digital experiences to elevate your business.</p></div>
+    <div>
+      <h4>Quick Links</h4>
+      <a href="#home">Home</a>
+      <a href="about.html#top" id="footer-about-link">About Us</a>
+      <a href="#">Services</a>
+      <a href="https://drive.google.com/file/d/1tQynfUJdyx85cAPj4rM6FBmo6THo79Wd/view?usp=sharing">Portfolio</a>
+      <a href="/contact">Contact</a>
+    </div>
+    <div>
+      <h4>Resources</h4>
+      <a href="#">Blog</a>
+      <a href="#">Case Studies</a>
+      <a href="#">FAQs</a>
+      <a href="/contact">Support</a>
+    </div>
+    <div>
+      <h4>Follow Us</h4>
+      <div class="social-icons">
+        <a href="https://www.facebook.com/Sociamize/" aria-label="Facebook"><img src="facebook.svg" alt="Facebook" style="width:24px;"></a>
+        <a href="https://www.instagram.com/sociamize/" aria-label="Instagram"><img src="instagram.png" alt="Instagram" style="width:24px;"></a>
+        <a href="#" aria-label="LinkedIn"><img src="linkedin.svg" alt="LinkedIn" style="width:24px;"></a>
+        <a href="#" aria-label="Twitter"><img src="twitter.svg" alt="Twitter" style="width:24px;"></a>
+      </div>
+    </div>
+  </div>
+  <div class="copyright">
+    &copy; 2025 Sociamize. All Rights Reserved.
+  </div>
+</footer>
+
+<script>
+  // MOBILE MENU TOGGLE
+const hamburger = document.querySelector('.hamburger');
+const nav = document.querySelector('nav');
+const dropdown = document.querySelector('.dropdown-wrapper');
+
+hamburger.addEventListener('click', (e) => {
+  e.stopPropagation();
+  nav.classList.toggle('show');
+});
+
+// MOBILE DROPDOWN
+dropdown.addEventListener('click', (e) => {
+  e.stopPropagation();
+  dropdown.classList.toggle('active');
+});
+
+// Close menu on click outside or scroll
+document.addEventListener('click', (e) => {
+  if (!nav.contains(e.target) && !hamburger.contains(e.target)) {
+    nav.classList.remove('show');
+    dropdown.classList.remove('active');
+  }
+});
+window.addEventListener('scroll', () => {
+  nav.classList.remove('show');
+  dropdown.classList.remove('active');
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const aboutLink = document.getElementById("footer-about-link");
+
+  if (aboutLink) {
+    aboutLink.addEventListener("click", (e) => {
+      if (window.location.pathname.includes("about.html")) {
+        e.preventDefault(); // stop reloading page
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth"
+        });
+      }
+    });
+  }
+});
+
+</script>
+</body>
+</html>

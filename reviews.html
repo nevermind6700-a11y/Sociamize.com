@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Reviews | Sociamize</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas Neue:wght@400;500;600&family=Roboto+Slab:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+
+body, html { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Manrope', sans-serif; background: #000; color: #fff; }
+a { text-decoration: none; color: inherit; }
+img { max-width: 100%; display: block; }
+
+/* HEADER */
+header {
+   background: rgba(0, 0, 0, 0.2);
+  padding: 5px 30px;
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center;
+  position: fixed; 
+  top: 20px; 
+  left: 10px; 
+  right: 20px; 
+  z-index: 1000;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  border-radius: 12px;
+  backdrop-filter: blur(15px);
+  height: auto; 
+}
+.head-text h3{ font-size: 1.7rem;font-family: Bebas Neue; color: #ff0000; letter-spacing: 2px; margin-bottom: 15px; font-weight: 600; }
+/* Nav */
+nav {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+}
+nav > a,
+nav > .dropdown-wrapper > a.dropdown {
+  color: #fff;
+  font-weight: 600;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 8px 15px;
+  position: relative;
+  transition: color 0.3s;
+}
+nav > a::before,
+nav > .dropdown-wrapper > a.dropdown::before { content: "•"; font-size: 16px; color: #fff; opacity: 0.5; margin-right: 6px; transition: color 0.3s; }
+nav > a.active::before { color: red; opacity: 1; }
+nav > a:hover, nav > .dropdown-wrapper > a.dropdown:hover { color: red; }
+nav > a:hover::before, nav > .dropdown-wrapper > a.dropdown:hover::before { color: red; }
+nav > .dropdown-wrapper > a.dropdown::after { content: "⮛"; font-size: 10px; margin-left: 4px; color: red; }
+.dropdown-wrapper { position: relative; }
+nav .dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 350px;
+  display: flex;
+  flex-direction: column;
+  background: #000;
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
+  transition: all 0.3s ease;
+  z-index: 100;
+}
+.dropdown-wrapper:hover .dropdown-menu { opacity: 10; transform: translateY(0); pointer-events: auto; }
+nav .dropdown-menu a { color: #fff; padding: 12px 20px; transition: color 0.3s; }
+nav .dropdown-menu a:hover { color: red; }
+
+/* Hamburger */
+.hamburger { display: none; flex-direction: column; justify-content: space-between; width: 24px; height: 18px; cursor: pointer; z-index: 1010; }
+.hamburger span { display: block; height: 3px; background: #fff; border-radius: 2px; }
+
+/* HERO / INTRO */
+.reviews-hero {
+      background: url("http://trycyfer.com/wp-content/uploads/2022/03/about-bg.jpg") center/cover no-repeat;
+      min-height: 60vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: #fff;
+      position: relative;
+    }
+    .reviews-hero::after {
+      content: "";
+      position: absolute;
+      top:0; left:0; right:0; bottom:0;
+      background: rgba(0,0,0,0.0);
+    }
+    .reviews-hero h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* REVIEWS SECTION */
+    .reviews-section {
+      padding: 80px 5%;
+      background:#111;
+    }
+    .reviews-section h2 {
+      text-align:center;
+      font-size:2.5rem;
+      margin-bottom:40px;
+      color:#ff0000;
+      font-family:'Roboto Slab', serif;
+    }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+
+    .review-card {
+      background:#1a1a1a;
+      border-radius:12px;
+      padding:25px;
+      color:#ccc;
+      text-align:left;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .review-card:hover {
+      transform: translateY(-5px);
+      box-shadow:0 8px 20px rgba(0,0,0,0.6);
+    }
+    .review-text {
+      font-size:1rem;
+      line-height:1.6;
+      margin-bottom:20px;
+    }
+    .review-author {
+      display:flex;
+      align-items:center;
+      gap:15px;
+    }
+    .review-author img {
+      width:50px;
+      height:50px;
+      border-radius:50%;
+      object-fit:cover;
+    }
+    .review-author h4 {
+      margin:0;
+      font-size:1.1rem;
+      font-weight:600;
+      color:#fff;
+    }
+    .review-author span {
+      font-size:0.9rem;
+      color:#aaa;
+    }
+    .stars {
+      color: #f4c150; /* gold stars */
+      margin-bottom: 15px;
+      font-size: 1.2rem;
+    }
+
+/* FOOTER */
+.footer { background:#111; padding:60px 20px; text-align:left; }
+.footer h4 { color:#ff0000; margin-bottom:20px; }
+.footer p { color:#ccc; margin-bottom:10px; }
+.footer a { color:#ccc; display:block; margin-bottom:8px; transition:0.3s; }
+.footer a:hover { color:#ff3333; }
+.social-icons { display:flex; gap:15px; margin-top:20px; }
+.social-icons a img { width:24px; }
+.copyright { text-align:center; margin-top:60px; color:#666; font-size:0.9rem; }
+
+/* RESPONSIVE */
+@media (max-width: 992px) {
+  .hamburger { display: flex; }
+  nav { 
+    position: fixed; top: 80px; left: -100%; width: 100%; height: calc(100% - 80px);
+    flex-direction: column; gap: 20px; padding-top: 20px; background: rgba(0,0,0,0.0); transition: left 0.3s ease; 
+  }
+  nav.show { left: 0; }
+  .dropdown-menu { position: static; display: none; }
+  .dropdown-wrapper.active .dropdown-menu { display: flex; flex-direction: column; width: 100%; }
+  .about { flex-direction: column; text-align: center; padding: 50px 5%; }
+  .about-images img { width: 100%; }
+  .hero-content { padding: 100px 20px 50px; text-align: center; }
+}
+.header {
+    justify-content: center;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+  }
+
+  /* move hamburger to left */
+  .hamburger {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  /* center logo text */
+  .head-text {
+    position: relative;
+    text-align: center;
+    flex: 1;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="head-text"><h3>SOCIAMIZE</h3></div>
+  <nav>
+    <a href="/" id="home-link">Home</a>
+    <a href="/about">About Us</a>
+    <a href="reviews.html" id="reviews-link">Reviews</a>
+    <div class="dropdown-wrapper">
+      <a href="#" class="dropdown">Services</a>
+      <div class="dropdown-menu">
+        <a href="#service1">Custom Application Development Services</a>
+        <a href="#service2">Custom Website Development Services</a>
+        <a href="#service3">Creative Digital Marketing</a>
+        <a href="#service4">IT Consulting Business</a>
+        <a href="#service5">E-commerce Website Development Services</a>
+        <a href="#service6">App Development Services</a>
+      </div>
+    </div>
+    <a href="https://drive.google.com/file/d/1tQynfUJdyx85cAPj4rM6FBmo6THo79Wd/view?usp=sharing">Portfolio</a>
+    <a href="/contact.html">Contact Us</a>
+  </nav>
+  <div class="hamburger"><span></span><span></span><span></span></div>
+</header>
+
+<!-- HERO / INTRO -->
+<!-- HERO -->
+  <section class="reviews-hero">
+    <h1>What Our Clients Say</h1>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="reviews-section">
+    <h2>Client Testimonials</h2>
+    <div class="reviews-grid">
+      <div class="review-card">
+  <p class="review-text">“Sociamize completely revamped our digital marketing strategy and delivered real results. Highly recommend them.”</p>
+  <div class="review-author">
+    <img src="amit-sharma.png" alt="Amit Sharma">
+    <div>
+      <h4>Amit Sharma</h4>
+      <span>Founder, TechNova</span>
+      <div class="stars">★★★★★</div>
+    </div>
+  </div>
+</div>
+
+<div class="review-card">
+  <p class="review-text">“The team at Sociamize helped us scale faster with targeted campaigns and creative designs.”</p>
+  <div class="review-author">
+    <img src="priya-nair.png" alt="Priya Nair">
+    <div>
+      <h4>Priya Nair</h4>
+      <span>Marketing Head, GreenEdge</span>
+      <div class="stars">★★★★☆</div>
+    </div>
+  </div>
+</div>
+
+<div class="review-card">
+  <p class="review-text">“Amazing service and excellent communication. They treat your business like their own.”</p>
+  <div class="review-author">
+    <img src="david-miller.png" alt="David Miller">
+    <div>
+      <h4>David Miller</h4>
+      <span>COO, BrightPath</span>
+      <div class="stars">★★★★★</div>
+    </div>
+  </div>
+</div>
+
+<div class="review-card">
+  <p class="review-text">“Sociamize’s strategies gave us consistent leads and boosted our brand presence online.”</p>
+  <div class="review-author">
+    <img src="samantha-lee.png" alt="Samantha Lee">
+    <div>
+      <h4>Samantha Lee</h4>
+      <span>Manager, StyleAura</span>
+      <div class="stars">★★★★☆</div>
+    </div>
+  </div>
+</div>
+
+<div class="review-card">
+  <p class="review-text">“Their SEO expertise and social campaigns made a huge impact on our sales.”</p>
+  <div class="review-author">
+    <img src="rohit-mehta.png" alt="Rohit Mehta">
+    <div>
+      <h4>Rohit Mehta</h4>
+      <span>CEO, FinEdge</span>
+      <div class="stars">★★★★★</div>
+    </div>
+  </div>
+</div>
+
+<div class="review-card">
+  <p class="review-text">“Loved working with Sociamize. They’re proactive and always bring innovative ideas.”</p>
+  <div class="review-author">
+    <img src="ananya-gupta.png" alt="Ananya Gupta">
+    <div>
+      <h4>Ananya Gupta</h4>
+      <span>Co-Founder, HealthFirst</span>
+      <div class="stars">★★★★☆</div>
+    </div>
+  </div>
+</div>
+
+<div class="review-card">
+  <p class="review-text">“Sociamize delivers what they promise. We saw results within weeks of starting.”</p>
+  <div class="review-author">
+    <img src="james-wilson.png" alt="James Wilson">
+    <div>
+      <h4>James Wilson</h4>
+      <span>MD, NexaWorks</span>
+      <div class="stars">★★★★★</div>
+    </div>
+  </div>
+</div>
+
+<div class="review-card">
+  <p class="review-text">“Professional, creative, and very easy to work with. Highly satisfied.”</p>
+  <div class="review-author">
+    <img src="sneha-kapoor.png" alt="Sneha Kapoor">
+    <div>
+      <h4>Sneha Kapoor</h4>
+      <span>Marketing Lead, EduSpark</span>
+      <div class="stars">★★★★☆</div>
+    </div>
+  </div>
+</div>
+
+<div class="review-card">
+  <p class="review-text">“We finally found a team that understands digital growth. Couldn’t be happier.”</p>
+  <div class="review-author">
+    <img src="michael-brown.png" alt="Michael Brown">
+    <div>
+      <h4>Michael Brown</h4>
+      <span>CEO, GlobalTech</span>
+      <div class="stars">★★★★★</div>
+    </div>
+  </div>
+</div>
+
+<div class="review-card">
+  <p class="review-text">“The campaigns were creative and impactful. Sociamize exceeded our expectations.”</p>
+  <div class="review-author">
+    <img src="isha-verma.png" alt="Isha Verma">
+    <div>
+      <h4>Isha Verma</h4>
+      <span>Brand Manager, LuxeLiving</span>
+      <div class="stars">★★★★☆</div>
+    </div>
+  </div>
+</div>
+
+<div class="review-card">
+  <p class="review-text">“A passionate team that always goes the extra mile. Truly impressed.”</p>
+  <div class="review-author">
+    <img src="daniel-scott.png" alt="Daniel Scott">
+    <div>
+      <h4>Daniel Scott</h4>
+      <span>Founder, MediaHive</span>
+      <div class="stars">★★★★★</div>
+    </div>
+  </div>
+</div>
+
+<div class="review-card">
+  <p class="review-text">“Our website traffic and engagement skyrocketed thanks to Sociamize.”</p>
+  <div class="review-author">
+    <img src="ritika-sen.png" alt="Ritika Sen">
+    <div>
+      <h4>Ritika Sen</h4>
+      <span>CMO, NextGen Retail</span>
+      <div class="stars">★★★★★</div>
+    </div>
+  </div>
+</div>
+
+<div class="review-card">
+  <p class="review-text">“They helped us define a strong brand identity online. Truly talented people.”</p>
+  <div class="review-author">
+    <img src="william-harris.png" alt="William Harris">
+    <div>
+      <h4>William Harris</h4>
+      <span>CEO, AlphaSoft</span>
+      <div class="stars">★★★★☆</div>
+    </div>
+  </div>
+</div>
+
+<div class="review-card">
+  <p class="review-text">“Their creative approach made our campaigns stand out. Great ROI too.”</p>
+  <div class="review-author">
+    <img src="megha-jain.png" alt="Megha Jain">
+    <div>
+      <h4>Megha Jain</h4>
+      <span>Director, BloomMart</span>
+      <div class="stars">★★★★★</div>
+    </div>
+  </div>
+</div>
+
+<div class="review-card">
+  <p class="review-text">“We’ve partnered with many agencies, but Sociamize stands out for their commitment.”</p>
+  <div class="review-author">
+    <img src="chris-evans.png" alt="Chris Evans">
+    <div>
+      <h4>Chris Evans</h4>
+      <span>Owner, Eventica</span>
+      <div class="stars">★★★★☆</div>
+    </div>
+  </div>
+</div>
+
+<div class="review-card">
+  <p class="review-text">“Smart, creative, and reliable. They delivered more than we expected.”</p>
+  <div class="review-author">
+    <img src="nikita-roy.png" alt="Nikita Roy">
+    <div>
+      <h4>Nikita Roy</h4>
+      <span>Founder, CraftNest</span>
+      <div class="stars">★★★★★</div>
+    </div>
+  </div>
+</div>
+
+<div class="review-card">
+  <p class="review-text">“From SEO to design, everything was handled with precision and care.”</p>
+  <div class="review-author">
+    <img src="john-carter.png" alt="John Carter">
+    <div>
+      <h4>John Carter</h4>
+      <span>MD, VisionCorp</span>
+      <div class="stars">★★★★☆</div>
+    </div>
+  </div>
+</div>
+
+<div class="review-card">
+  <p class="review-text">“Sociamize gave our brand a powerful digital voice. Fantastic experience!”</p>
+  <div class="review-author">
+    <img src="shreya-malhotra.png" alt="Shreya Malhotra">
+    <div>
+      <h4>Shreya Malhotra</h4>
+      <span>CEO, TrendSphere</span>
+      <div class="stars">★★★★★</div>
+     </div>
+     </div>
+     </div>
+    </div>
+  </section>
+
+<!-- FOOTER -->
+<style>
+    body { margin:0; font-family: 'Inter', sans-serif; background:#000; color:#fff; line-height:1.6; }
+    a { text-decoration:none; color:inherit; }
+    h2 { font-family:'Roboto Slab', serif; font-weight:700; }
+    h3 { font-family:'Roboto Slab', serif; font-weight:700; }
+    p { font-family:'Inter', sans-serif; color:#ccc; }
+    button { cursor:pointer; }
+    img { max-width:100%; display:block; }
+    .container { max-width:1200px; margin:0 auto; padding:0 20px; }
+    .grid { display:grid; gap:20px; }
+    @media(min-width:768px){ .grid-2 { grid-template-columns:repeat(2,1fr); } .grid-3 { grid-template-columns:repeat(3,1fr); } .grid-4 { grid-template-columns:repeat(4,1fr); } }
+    .footer { background:#111; padding:60px 20px; text-align:left; }
+    .footer h4 { color:#ff0000; margin-bottom:20px; }
+    .footer p { color:#ccc; margin-bottom:10px; }
+    .footer a { color:#ccc; display:block; margin-bottom:8px; transition:0.3s; }
+    .footer a:hover { color:#ff3333; }
+    .social-icons { display:flex; gap:15px; margin-top:20px; }
+    .social-icons a { font-size:1.5rem; color:#ccc; transition:0.3s; }
+    .social-icons a:hover { color:#ff3333; }
+    .copyright { text-align:center;margin-bottom:-50px; margin-top:60px; color:#666; font-size:0.9rem; }
+@media (max-width: 768px) {
+  .footer {
+    text-align:center;
+  }
+
+  .footer .logo {
+    margin: 0 auto 20px; /* centers logo */
+    display: block;
+  }
+
+  .social-icons {
+    justify-content:center;
+  }
+}
+  </style>
+
+<!-- Footer Section -->
+<footer class="footer">
+  <div class="container grid grid-4">
+    <div><img src="logo-final.png" alt="Logo" style="width:200px; margin-bottom:-50px; margin-top:-90px;"><p>Creating innovative digital experiences to elevate your business.</p></div>
+    <div>
+      <h4>Quick Links</h4>
+      <a href="#home">Home</a>
+      <a href="/about" id="footer-about-link">About Us</a>
+      <a href="#">Services</a>
+      <a href="https://drive.google.com/file/d/1tQynfUJdyx85cAPj4rM6FBmo6THo79Wd/view?usp=sharing">Portfolio</a>
+      <a href="/contact">Contact</a>
+    </div>
+    <div>
+      <h4>Resources</h4>
+      <a href="#">Blog</a>
+      <a href="#">Case Studies</a>
+      <a href="#">FAQs</a>
+      <a href="/contact">Support</a>
+    </div>
+    <div>
+      <h4>Follow Us</h4>
+      <div class="social-icons">
+        <a href="https://www.facebook.com/Sociamize/" aria-label="Facebook"><img src="facebook.svg" alt="Facebook" style="width:24px;"></a>
+        <a href="https://www.instagram.com/sociamize/" aria-label="Instagram"><img src="instagram.png" alt="Instagram" style="width:24px;"></a>
+        <a href="#" aria-label="LinkedIn"><img src="linkedin.svg" alt="LinkedIn" style="width:24px;"></a>
+        <a href="#" aria-label="Twitter"><img src="twitter.svg" alt="Twitter" style="width:24px;"></a>
+      </div>
+    </div>
+  </div>
+  <div class="copyright">
+    &copy; 2025 Sociamize. All Rights Reserved.
+  </div>
+</footer>
+
+<script>
+  // MOBILE MENU TOGGLE
+const hamburger = document.querySelector('.hamburger');
+const nav = document.querySelector('nav');
+const dropdown = document.querySelector('.dropdown-wrapper');
+
+hamburger.addEventListener('click', (e) => {
+  e.stopPropagation();
+  nav.classList.toggle('show');
+});
+
+// MOBILE DROPDOWN
+dropdown.addEventListener('click', (e) => {
+  e.stopPropagation();
+  dropdown.classList.toggle('active');
+});
+
+// Close menu on click outside or scroll
+document.addEventListener('click', (e) => {
+  if (!nav.contains(e.target) && !hamburger.contains(e.target)) {
+    nav.classList.remove('show');
+    dropdown.classList.remove('active');
+  }
+});
+window.addEventListener('scroll', () => {
+  nav.classList.remove('show');
+  dropdown.classList.remove('active');
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const aboutLink = document.getElementById("footer-about-link");
+
+  if (aboutLink) {
+    aboutLink.addEventListener("click", (e) => {
+      if (window.location.pathname.includes("about.html")) {
+        e.preventDefault(); // stop reloading page
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth"
+        });
+      }
+    });
+  }
+});
+
+</script>
+</body>
+</html>

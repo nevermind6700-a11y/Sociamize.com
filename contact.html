@@ -4,9 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Contact Us | Sociamize</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Roboto+Slab:wght@600;700&display=swap" rel="stylesheet">
   <style>
 
+body, html { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; background: #000; color: #fff; }
+a { text-decoration: none; color: inherit; }
+img { max-width: 100%; display: block; }
+
+/* HEADER */
 header {
    background: rgba(0, 0, 0, 0.2);
   padding: 5px 30px;
@@ -64,36 +69,182 @@ nav .dropdown-menu {
   transition: all 0.3s ease;
   z-index: 100;
 }
-.dropdown-wrapper:hover .dropdown-menu { opacity: 1; transform: translateY(0); pointer-events: auto; }
+.dropdown-wrapper:hover .dropdown-menu { opacity: 10; transform: translateY(0); pointer-events: auto; }
 nav .dropdown-menu a { color: #fff; padding: 12px 20px; transition: color 0.3s; }
 nav .dropdown-menu a:hover { color: red; }
 
 /* Hamburger */
 .hamburger { display: none; flex-direction: column; justify-content: space-between; width: 24px; height: 18px; cursor: pointer; z-index: 1010; }
 .hamburger span { display: block; height: 3px; background: #fff; border-radius: 2px; }
-      .contact-page {
-      padding: 150px 20px 60px; /* top padding leaves space for fixed header */
-      max-width: 900px;
-      margin: auto;
-      text-align: center;
-    }
-    .contact-page h1 { font-size: 2.5rem; margin-bottom: 10px; }
-    .contact-page p { font-size: 1rem; margin-bottom: 30px; color: #ddd; }
 
-    form { display: flex; flex-direction: column; gap: 15px; text-align: left; }
-    form input, form textarea {
-      padding: 12px; border-radius: 6px; border: none;
-      font-size: 1rem; font-family: inherit; outline: none;
-    }
-    form button {
-      background: red; color: #fff; padding: 14px; font-size: 1rem;
-      font-weight: 600; border: none; border-radius: 6px; cursor: pointer;
-    }
-    form button:hover { background: darkred; }
+      
+.contact-section {
+  display: flex;
+  gap: 60px;
+  padding: 60px 5% 60px 5%;
+  margin-top: 80px; /* adds extra space above the section */
+  background: #111;
+  color: #fff;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
 
-    @media(max-width:768px) {
-      .contact-page { padding: 120px 15px 50px; }
-    }
+.contact-left {
+  flex: 1;
+  min-width: 300px;
+}
+
+.contact-left .contact-logo {
+  width: 150px;
+  margin-bottom: 20px;
+}
+
+.contact-left h2 {
+  color: #ff0000;
+  font-size: 1rem;
+  letter-spacing: 2px;
+  letter-spacing: 2px;
+ margin-bottom: 5px;
+ font-weight: 500;
+}
+
+.contact-left h3 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+}
+
+.contact-left p {
+  font-size: 1rem;
+  color: #ccc;
+  line-height: 1.6;
+}
+
+.contact-details a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.contact-details a:hover {
+  color: #ff0000;
+}
+
+.social-icons {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.social-icons img {
+  width: 30px;
+  height: 30px;
+}
+
+.contact-right {
+  flex: 1;
+  min-width: 300px;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-row {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.form-row input {
+  flex: 1;
+  padding: 12px;
+  border-radius: 6px;
+  border: none;
+}
+
+.services-label {
+  margin-top: 15px;
+  font-weight: 600;
+}
+
+.checkbox-row {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 15px;
+}
+
+.checkbox-row label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+textarea {
+  padding: 12px;
+  border-radius: 6px;
+  border: none;
+  resize: vertical;
+}
+
+button {
+  padding: 14px;
+  background: #ff0000;
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #cc0000;
+}
+
+@media(max-width:992px) {
+  .contact-section {
+    flex-direction: column;
+  }
+  .contact-left, .contact-right {
+    width: 100%;
+  }
+}
+
+#thank-you {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 80%;
+  height: 100%;
+  background: rgba(0,0,0,0.95);
+  color: #ff0000;
+  font-size: 2rem;
+  font-weight: 700;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  text-align: center;
+  padding: 20px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 992px) {
+  .hamburger { display: flex; }
+  nav { 
+    position: fixed; top: 80px; left: -100%; width: 100%; height: calc(100% - 80px);
+    flex-direction: column; gap: 20px; padding-top: 20px; background: rgba(0,0,0,0.95); transition: left 0.3s ease; 
+  }
+  nav.show { left: 0; }
+  .dropdown-menu { position: static; display: none; }
+  .dropdown-wrapper.active .dropdown-menu { display: flex; flex-direction: column; width: 100%; }
+  .about { flex-direction: column; text-align: center; padding: 50px 5%; }
+  .about-images img { width: 100%; }
+  .hero-content { padding: 100px 20px 50px; text-align: center; }
+}
 
   </style>
 </head>
@@ -118,7 +269,7 @@ nav .dropdown-menu a:hover { color: red; }
       </div>
     </div>
     <a href="https://drive.google.com/file/d/1tQynfUJdyx85cAPj4rM6FBmo6THo79Wd/view?usp=sharing">Portfolio</a>
-    <a href="/contact.html">Contact Us</a>
+    <a href="/contact">Contact Us</a>
   </nav>
   <div class="hamburger"><span></span><span></span><span></span></div>
 </header>
@@ -176,14 +327,14 @@ nav .dropdown-menu a:hover { color: red; }
   <a href="index.html#aboutus" class="scroll-link">About Us</a>
       <a href="#">Services</a>
       <a href="https://drive.google.com/file/d/1tQynfUJdyx85cAPj4rM6FBmo6THo79Wd/view?usp=sharing">Portfolio</a>
-      <a href="/contact.html">Contact</a>
+      <a href="/contact">Contact</a>
     </div>
     <div>
       <h4>Resources</h4>
       <a href="#">Blog</a>
       <a href="#">Case Studies</a>
       <a href="#">FAQs</a>
-      <a href="/contact.html">Support</a>
+      <a href="/contact">Support</a>
     </div>
     <div>
       <h4>Follow Us</h4>
@@ -220,6 +371,36 @@ form.addEventListener('submit', async (e) => {
     alert("Oops! Something went wrong. Please try again.");
   }
 });
+
+// Home link
+document.getElementById('home-link').addEventListener('click', function(e) {
+  e.preventDefault();
+  window.location.href = '/'; // navigate to main page top
+});
+
+// All scroll links
+document.querySelectorAll('.scroll-link').forEach(link => {
+  link.addEventListener('click', function(e) {
+    const href = this.getAttribute('href');
+
+    // Check if link is on same page or another page
+    if (href.startsWith('index.html')) {
+      e.preventDefault();
+      const targetID = href.split('#')[1];
+      // Navigate to main page with hash
+      window.location.href = `/${href}`;
+    } else if (href.startsWith('#')) {
+      e.preventDefault();
+      const targetID = href.substring(1);
+      const targetEl = document.getElementById(targetID);
+      if (targetEl) {
+        targetEl.scrollIntoView({ behavior: 'smooth' });
+        history.replaceState(null, null, '/contact'); // keep URL clean
+      }
+    }
+  });
+});
+
 </script>
 </body>
 </html>

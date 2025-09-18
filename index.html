@@ -376,7 +376,7 @@ nav .dropdown-menu a:hover { color: red; }
   <nav>
     <a href="/" id="home-link">Home</a>
     <a href="/about">About Us</a>
-    <a href="#reviews" class="scroll-link">Reviews</a>
+    <a href="/reviews">Reviews</a>
 
     <div class="dropdown-wrapper">
       <a href="" class="dropdown">Services</a>
@@ -665,6 +665,20 @@ nav .dropdown-menu a:hover { color: red; }
     .social-icons a { font-size:1.5rem; color:#ccc; transition:0.3s; }
     .social-icons a:hover { color:#ff3333; }
     .copyright { text-align:center;margin-bottom:-50px; margin-top:60px; color:#666; font-size:0.9rem; }
+   @media (max-width: 768px) {
+  .footer {
+    text-align:center;
+  }
+
+  .footer .logo {
+    margin: 0 auto 20px; /* centers logo */
+    display: block;
+  }
+
+  .social-icons {
+    justify-content:center;
+  }
+}
   </style>
 
 <!-- Footer Section -->
@@ -803,6 +817,7 @@ document.querySelectorAll('.scroll-link').forEach(link => {
 
 </body>
 </html>
+
 
 
 

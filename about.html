@@ -389,7 +389,35 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+// Disable right-click
+  document.addEventListener("contextmenu", function(e) {
+    e.preventDefault();
+    alert("Right-click is disabled on this site.");
+  });
 
+  // Disable common inspect shortcuts
+  document.addEventListener("keydown", function(e) {
+    // F12
+    if (e.keyCode === 123) {
+      e.preventDefault();
+      alert("Inspect is disabled.");
+    }
+    // Ctrl+Shift+I
+    if (e.ctrlKey && e.shiftKey && e.keyCode === 73) {
+      e.preventDefault();
+      alert("Inspect is disabled.");
+    }
+    // Ctrl+Shift+J
+    if (e.ctrlKey && e.shiftKey && e.keyCode === 74) {
+      e.preventDefault();
+      alert("Inspect is disabled.");
+    }
+    // Ctrl+U (View Source)
+    if (e.ctrlKey && e.keyCode === 85) {
+      e.preventDefault();
+      alert("View source is disabled.");
+    }
+  });
 </script>
 </body>
 </html>
